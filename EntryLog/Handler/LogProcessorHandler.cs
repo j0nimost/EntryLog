@@ -11,6 +11,13 @@ namespace EntryLog.Handler
         {
             string FolderPath = EntryLog.LogPath.LocalPath.ToString() + @"\" + foldername;
 
+            // Check LocalPath
+            if (!Directory.Exists(EntryLog.LogPath.LocalPath.ToString()))
+            {
+                Directory.CreateDirectory(EntryLog.LogPath.LocalPath.ToString());
+            }
+
+            // Check Folder Path
             if (!Directory.Exists(FolderPath))
             {
                 Directory.CreateDirectory(FolderPath);
