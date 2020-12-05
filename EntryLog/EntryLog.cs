@@ -30,6 +30,10 @@ namespace EntryLog
             }
         }
 
+        /// <summary>
+        /// Writes Audit Logs to a specific Audit Folder
+        /// </summary>
+        /// <param name="audit"></param>
         public void LogAudit(string audit)
         {
             if (String.IsNullOrEmpty(FolderName_Audit))
@@ -40,6 +44,11 @@ namespace EntryLog
             this.logHandler.StreamWritter(audit, FolderName_Audit);
         }
 
+        /// <summary>
+        /// Takes in Audit FolderName and writes Audit Logs to that Folder
+        /// </summary>
+        /// <param name="audit"></param>
+        /// <param name="auditFoldername"></param>
         public void LogAudit(string audit, string auditFoldername)
         {
             if (!String.IsNullOrEmpty(auditFoldername))
@@ -48,6 +57,10 @@ namespace EntryLog
             }
         }
 
+        /// <summary>
+        /// Writes Warning Logs to a specific Warning Folder
+        /// </summary>
+        /// <param name="warning"></param>
         public void LogWarning(string warning)
         {
             if (String.IsNullOrEmpty(FolderName_Warning))
@@ -57,6 +70,11 @@ namespace EntryLog
             this.logHandler.StreamWritter(warning, FolderName_Warning);
         }
 
+        /// <summary>
+        /// Takes in Warning FolderName and writes Warning Logs to that Folder
+        /// </summary>
+        /// <param name="warning"></param>
+        /// <param name="warningFoldername"></param>
         public void LogWarning(string warning, string warningFoldername)
         {
             if (!String.IsNullOrEmpty(warningFoldername))
@@ -65,6 +83,10 @@ namespace EntryLog
             }
         }
 
+        /// <summary>
+        /// Writes Error Logs to a specific Error Folder
+        /// </summary>
+        /// <param name="error"></param>
         public void LogError(string error)
         {
             if (String.IsNullOrEmpty(FolderName_Error))
@@ -74,6 +96,11 @@ namespace EntryLog
             this.logHandler.StreamWritter(error, FolderName_Error);
         }
 
+        /// <summary>
+        /// Takes in Error FolderName and writes Error Logs to that Folder
+        /// </summary>
+        /// <param name="error"></param>
+        /// <param name="errorFoldername"></param>
         public void LogError(string error, string errorFoldername)
         {
             if (!String.IsNullOrEmpty(errorFoldername))

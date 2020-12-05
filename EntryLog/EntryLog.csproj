@@ -2,11 +2,32 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.3.0-beta</Version>
+    <Authors>j0nimost</Authors>
+    <Description>EntryLog is a small library that writes logs to a file. Currently supports NetStandard 2.1
+</Description>
+    <Copyright>2020</Copyright>
+    <PackageTags>logs</PackageTags>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <RepositoryType>public</RepositoryType>
+    <RepositoryUrl>https://github.com/j0nimost/EntryLog</RepositoryUrl>
+    <PackageReleaseNotes>This beta version includes the following;
+- .NetStandard2.1 and above support
+- Service Injectable library
+- Supports both custom and default folder naming schemes</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
     <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Desktop\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
