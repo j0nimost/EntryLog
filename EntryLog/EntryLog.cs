@@ -10,14 +10,16 @@ namespace EntryLog
     public class EntryLog: IEntryLog
     {
         internal static Uri LogPath;
+        internal static LogInterval Log_Interval;
         public static string FolderName_Audit;
         public static string FolderName_Warning;
         public static string FolderName_Error;
         private readonly ILogHandler logHandler;
 
-        public EntryLog(ILogHandler logHandler, Uri logfolderPath = null)
+        public EntryLog(ILogHandler logHandler,LogInterval? logInterval= null, Uri logfolderPath = null)
         {
             this.logHandler = logHandler;
+            Log_Interval = logInterval.HasValue ? logInterval.Value : LogInterval.EveryMinute;
 
             if (logfolderPath == null)
             {
@@ -30,10 +32,7 @@ namespace EntryLog
             }
         }
 
-        /// <summary>
-        /// Writes Audit Logs to a specific Audit Folder
-        /// </summary>
-        /// <param name="audit"></param>
+
         public void LogAudit(string audit)
         {
             if (String.IsNullOrEmpty(FolderName_Audit))
@@ -44,11 +43,7 @@ namespace EntryLog
             this.logHandler.StreamWritter(audit, FolderName_Audit);
         }
 
-        /// <summary>
-        /// Takes in Audit FolderName and writes Audit Logs to that Folder
-        /// </summary>
-        /// <param name="audit"></param>
-        /// <param name="auditFoldername"></param>
+        
         public void LogAudit(string audit, string auditFoldername)
         {
             if (!String.IsNullOrEmpty(auditFoldername))
@@ -57,10 +52,7 @@ namespace EntryLog
             }
         }
 
-        /// <summary>
-        /// Writes Warning Logs to a specific Warning Folder
-        /// </summary>
-        /// <param name="warning"></param>
+        
         public void LogWarning(string warning)
         {
             if (String.IsNullOrEmpty(FolderName_Warning))
@@ -70,11 +62,7 @@ namespace EntryLog
             this.logHandler.StreamWritter(warning, FolderName_Warning);
         }
 
-        /// <summary>
-        /// Takes in Warning FolderName and writes Warning Logs to that Folder
-        /// </summary>
-        /// <param name="warning"></param>
-        /// <param name="warningFoldername"></param>
+        
         public void LogWarning(string warning, string warningFoldername)
         {
             if (!String.IsNullOrEmpty(warningFoldername))
@@ -83,10 +71,7 @@ namespace EntryLog
             }
         }
 
-        /// <summary>
-        /// Writes Error Logs to a specific Error Folder
-        /// </summary>
-        /// <param name="error"></param>
+        
         public void LogError(string error)
         {
             if (String.IsNullOrEmpty(FolderName_Error))
@@ -96,11 +81,7 @@ namespace EntryLog
             this.logHandler.StreamWritter(error, FolderName_Error);
         }
 
-        /// <summary>
-        /// Takes in Error FolderName and writes Error Logs to that Folder
-        /// </summary>
-        /// <param name="error"></param>
-        /// <param name="errorFoldername"></param>
+        
         public void LogError(string error, string errorFoldername)
         {
             if (!String.IsNullOrEmpty(errorFoldername))
@@ -113,14 +94,38 @@ namespace EntryLog
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// It takes one optional parameter the Uri path to a folder.
-        /// If not provided it will write logs to the default execution path.
+        /// Initializes an EntryLog Instance with default values for
+        ///  - Log Interval
+        /// - Uri path to a folder
         /// </summary>
-        /// <param name="logfolderPath"></param>
-        public static void AddEntryLog(this IServiceCollection services, Uri logfolderPath = null)
+        /// <param name="logInterval"></param>
+        public static void AddEntryLog(this IServiceCollection services)
         {
             services.AddSingleton<ILogHandler, LogProcessorHandler>();
-            services.AddSingleton<IEntryLog, EntryLog>(v => new EntryLog(v.GetRequiredService<ILogHandler>(), logfolderPath));
+            services.AddSingleton<IEntryLog, EntryLog>(v => new EntryLog(v.GetRequiredService<ILogHandler>()));
+        }
+        /// <summary>
+        /// Takes one parameter log interval.
+        /// Writes logs to the default execution path.
+        /// </summary>
+        /// <param name="logInterval"></param>
+        public static void AddEntryLog(this IServiceCollection services, LogInterval logInterval)
+        {
+            services.AddSingleton<ILogHandler, LogProcessorHandler>();
+            services.AddSingleton<IEntryLog, EntryLog>(v => new EntryLog(v.GetRequiredService<ILogHandler>(), logInterval));
+        }
+
+        /// <summary>
+        /// It takes two parameters:
+        /// - Log Interval
+        /// - Uri path to a folder
+        /// Writes logs to the default execution path, with a default interval.
+        /// </summary>
+        /// <param name="logfolderPath"></param>
+        public static void AddEntryLog(this IServiceCollection services, LogInterval logInterval, Uri logfolderPath)
+        {
+            services.AddSingleton<ILogHandler, LogProcessorHandler>();
+            services.AddSingleton<IEntryLog, EntryLog>(v => new EntryLog(v.GetRequiredService<ILogHandler>(), logInterval, logfolderPath));
         }
     }
 }

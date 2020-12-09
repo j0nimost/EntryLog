@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EntryLog</name>
+    </assembly>
+    <members>
+        <member name="M:EntryLog.ServiceCollectionExtensions.AddEntryLog(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Initializes an EntryLog Instance with default values for
+             - Log Interval
+            - Uri path to a folder
+            </summary>
+            <param name="logInterval"></param>
+        </member>
+        <member name="M:EntryLog.ServiceCollectionExtensions.AddEntryLog(Microsoft.Extensions.DependencyInjection.IServiceCollection,EntryLog.LogInterval)">
+            <summary>
+            Takes one parameter log interval.
+            Writes logs to the default execution path.
+            </summary>
+            <param name="logInterval"></param>
+        </member>
+        <member name="M:EntryLog.ServiceCollectionExtensions.AddEntryLog(Microsoft.Extensions.DependencyInjection.IServiceCollection,EntryLog.LogInterval,System.Uri)">
+            <summary>
+            It takes two parameters:
+            - Log Interval
+            - Uri path to a folder
+            Writes logs to the default execution path, with a default interval.
+            </summary>
+            <param name="logfolderPath"></param>
+        </member>
+        <member name="M:EntryLog.IEntryLog.LogAudit(System.String)">
+            <summary>
+            Writes Audit Logs to a specific Audit Folder
+            </summary>
+            <param name="audit"></param>
+        </member>
+        <member name="M:EntryLog.IEntryLog.LogAudit(System.String,System.String)">
+            <summary>
+            Takes in Audit FolderName and writes Audit Logs to that Folder
+            </summary>
+            <param name="audit"></param>
+            <param name="auditFoldername"></param>
+        </member>
+        <member name="M:EntryLog.IEntryLog.LogWarning(System.String)">
+            <summary>
+            Writes Warning Logs to a specific Warning Folder
+            </summary>
+            <param name="warning"></param>
+        </member>
+        <member name="M:EntryLog.IEntryLog.LogWarning(System.String,System.String)">
+            <summary>
+            Takes in Warning FolderName and writes Warning Logs to that Folder
+            </summary>
+            <param name="warning"></param>
+            <param name="warningFoldername"></param>
+        </member>
+        <member name="M:EntryLog.IEntryLog.LogError(System.String)">
+            <summary>
+            Writes Error Logs to a specific Error Folder
+            </summary>
+            <param name="error"></param>
+        </member>
+        <member name="M:EntryLog.IEntryLog.LogError(System.String,System.String)">
+            <summary>
+            Takes in Error FolderName and writes Error Logs to that Folder
+            </summary>
+            <param name="error"></param>
+            <param name="errorFoldername"></param>
+        </member>
+        <member name="T:EntryLog.LogInterval">
+            <summary>
+            Log Interval spaces out the interval between which a new log file is created
+            </summary>
+        </member>
+    </members>
+</doc>
