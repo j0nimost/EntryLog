@@ -11,21 +11,32 @@ Alternatively, from your `dotnet` console paste the following:
 
 ### Implementation
 
-In your .Net Core application service add the following;
+In your .Net Core application service add the following ways;
+
+1. You can intialize the service with all default values using the following.
 
 ```
 .... 
 
 services.AddEntryLog();
 ```
-This will default all your logs where your application is running from.
 
-You can also specify where you want your logs to be locate by adding the Uri path as shown below.
+
+2. You can include Log Interval only using the following.
+
+```
+.... 
+
+services.AddEntryLog(LogInterval.EverySecond);
+```
+
+3. You can also specify where you want your logs to be locate by adding the Uri path as shown below.
+## Note: This also includes a log interval
 
 ```
 ....
 
-services.AddEntryLog(new Uri(@"C:\Archive"));
+services.AddEntryLog(LogInterval.EverySecond, new Uri(@"C:\Archive"));
 ```
 
 You can now add Dependency Injection as you would do in the class contructor.
