@@ -31,7 +31,7 @@ services.AddEntryLog(LogInterval.EverySecond);
 ```
 
 3. You can also specify where you want your logs to be locate by adding the Uri path as shown below.
-## Note: This also includes a log interval
+#### Note: This also includes a log interval
 
 ```
 ....
