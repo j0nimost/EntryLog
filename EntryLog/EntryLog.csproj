@@ -3,19 +3,21 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.3.0-beta</Version>
+    <Version>0.3.1</Version>
     <Authors>j0nimost</Authors>
-    <Description>EntryLog is a small library that writes logs to a file. Currently supports NetStandard 2.1
+    <Description>EntryLog is a small library that writes logs to a file. Currently supports &gt;= NetStandard 2.1
 </Description>
     <Copyright>2020</Copyright>
     <PackageTags>logs</PackageTags>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <RepositoryType>public</RepositoryType>
     <RepositoryUrl>https://github.com/j0nimost/EntryLog</RepositoryUrl>
-    <PackageReleaseNotes>This beta version includes the following;
-- .NetStandard2.1 and above support
-- Service Injectable library
-- Supports both custom and default folder naming schemes</PackageReleaseNotes>
+    <PackageReleaseNotes>This new build supports Log Intervals such as:
+
+- EveryDay
+- EveryHour
+- EveryMinute
+- EverySecond</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

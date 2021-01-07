@@ -2,7 +2,6 @@
 
 A small class library that allows one to write logs to files.
 
-[![Documentation Status](https://readthedocs.org/projects/entrylog/badge/?version=latest)](https://entrylog.readthedocs.io/en/latest/?badge=latest)
 ### Startup
 Get this package from [Nuget](https://www.nuget.org/packages). Use the search term 'EntryLog' and install it.
 
@@ -12,32 +11,21 @@ Alternatively, from your `dotnet` console paste the following:
 
 ### Implementation
 
-In your .Net Core application service add the following ways;
-
-1. You can intialize the service with all default values using the following.
+In your .Net Core application service add the following;
 
 ```
 .... 
 
 services.AddEntryLog();
 ```
+This will default all your logs where your application is running from.
 
-
-2. You can include Log Interval only using the following.
-
-```
-.... 
-
-services.AddEntryLog(LogInterval.EverySecond);
-```
-
-3. You can also specify where you want your logs to be locate by adding the Uri path as shown below.
-#### Note: This also includes a log interval
+You can also specify where you want your logs to be locate by adding the Uri path as shown below.
 
 ```
 ....
 
-services.AddEntryLog(LogInterval.EverySecond, new Uri(@"C:\Archive"));
+services.AddEntryLog(new Uri(@"C:\Archive"));
 ```
 
 You can now add Dependency Injection as you would do in the class contructor.
