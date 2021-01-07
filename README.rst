@@ -2,7 +2,6 @@
 
 A small class library that allows one to write logs to files.
 
-[![Documentation Status](https://readthedocs.org/projects/entrylog/badge/?version=latest)](https://entrylog.readthedocs.io/en/latest/?badge=latest)
 ### Startup
 Get this package from [Nuget](https://www.nuget.org/packages). Use the search term 'EntryLog' and install it.
 

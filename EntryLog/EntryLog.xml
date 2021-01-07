@@ -28,6 +28,25 @@
             </summary>
             <param name="logfolderPath"></param>
         </member>
+        <member name="M:EntryLog.Handler.ILogHandler.FolderCheckerorCreater(System.String)">
+            <summary>
+            Checks whether the existing folder path exists and creates it
+            </summary>
+            <param name="foldername"></param>
+        </member>
+        <member name="M:EntryLog.Handler.ILogHandler.StreamWritter(System.String,System.String)">
+            <summary>
+            Writes logs to file
+            </summary>
+            <param name="log"></param>
+            <param name="foldername"></param>
+        </member>
+        <member name="M:EntryLog.Handler.ILogHandler.FileName">
+            <summary>
+            Checks log interval and generates file name
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:EntryLog.IEntryLog.LogAudit(System.String)">
             <summary>
             Writes Audit Logs to a specific Audit Folder
