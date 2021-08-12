@@ -99,20 +99,22 @@ namespace EntryLog
         /// - Uri path to a folder
         /// </summary>
         /// <param name="logInterval"></param>
-        public static void AddEntryLog(this IServiceCollection services)
+        public static IServiceCollection AddEntryLog(this IServiceCollection services)
         {
             services.AddSingleton<ILogHandler, LogProcessorHandler>();
             services.AddSingleton<IEntryLog, EntryLog>(v => new EntryLog(v.GetRequiredService<ILogHandler>()));
+            return services;
         }
         /// <summary>
         /// Takes one parameter log interval.
         /// Writes logs to the default execution path.
         /// </summary>
         /// <param name="logInterval"></param>
-        public static void AddEntryLog(this IServiceCollection services, LogInterval logInterval)
+        public static IServiceCollection AddEntryLog(this IServiceCollection services, LogInterval logInterval)
         {
             services.AddSingleton<ILogHandler, LogProcessorHandler>();
             services.AddSingleton<IEntryLog, EntryLog>(v => new EntryLog(v.GetRequiredService<ILogHandler>(), logInterval));
+            return services;
         }
 
         /// <summary>
@@ -122,10 +124,12 @@ namespace EntryLog
         /// Writes logs to the default execution path, with a default interval.
         /// </summary>
         /// <param name="logfolderPath"></param>
-        public static void AddEntryLog(this IServiceCollection services, LogInterval logInterval, Uri logfolderPath)
+        public static IServiceCollection AddEntryLog(this IServiceCollection services, LogInterval logInterval, Uri logfolderPath)
         {
             services.AddSingleton<ILogHandler, LogProcessorHandler>();
             services.AddSingleton<IEntryLog, EntryLog>(v => new EntryLog(v.GetRequiredService<ILogHandler>(), logInterval, logfolderPath));
+
+            return services;
         }
     }
 }
